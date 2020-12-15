@@ -1,4 +1,5 @@
 using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace StringCalculatorKata
 {
@@ -16,7 +17,10 @@ namespace StringCalculatorKata
             int sum = 0;
             foreach (var number in numbers)
             {
-                sum += Convert.ToInt32(number);
+                if (!String.Empty.Equals(number))
+                {
+                    sum += Convert.ToInt32(number);
+                }
             }
             return sum;
         }

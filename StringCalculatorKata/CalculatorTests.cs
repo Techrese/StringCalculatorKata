@@ -87,5 +87,15 @@ namespace StringCalculatorKata
 
             Assert.AreEqual(2, result);
         }
+        
+        [Test]
+        public void WhenGivenAnyInputsWithSpecifiedDelimiter_ShouldReturnSum()
+        {
+            string input = "$\n2$2";
+
+            int result = _calculator.Add(input);
+
+            Assert.AreEqual(4, result);
+        }
     }
 }
