@@ -41,11 +41,21 @@ namespace StringCalculatorKata
         [Test]
         public void WhenGivenTwoInputs_ShouldReturnSum()
         {
-            string input = "1,1";
+            string input = "2,2";
 
             int result = _calculator.Add(input);
 
-            Assert.AreEqual(2, result);
+            Assert.AreEqual(4, result);
+        }
+
+        [Test]
+        public void WhenGivenAnyInputs_ShouldReturnSum()
+        {
+            string input = "2,2,2,2,2,2,2,2,2,2,2";
+
+            int result = _calculator.Add(input);
+
+            Assert.AreEqual(22, result);
         }
     }
 }

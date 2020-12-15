@@ -10,6 +10,16 @@ namespace StringCalculatorKata
             {
                 return 0;
             }
+
+            string[] numbers = input.Split(',');  
+            
+
+
+            if (numbers.Length == 2)
+            {
+                return Convert.ToInt32(numbers.GetValue(0)) + Convert.ToInt32(numbers.GetValue(1));
+            }            
+
             return Convert.ToInt32(input);
         }
     }
