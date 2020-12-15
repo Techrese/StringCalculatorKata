@@ -37,5 +37,15 @@ namespace StringCalculatorKata
 
             Assert.AreEqual(2, result);
         }
+        
+        [Test]
+        public void WhenGivenTwoInputs_ShouldReturnSum()
+        {
+            string input = "1,1";
+
+            int result = _calculator.Add(input);
+
+            Assert.AreEqual(2, result);
+        }
     }
 }
