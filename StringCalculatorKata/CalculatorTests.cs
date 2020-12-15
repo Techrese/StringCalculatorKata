@@ -97,5 +97,14 @@ namespace StringCalculatorKata
 
             Assert.AreEqual(4, result);
         }
+
+        [Test]
+        public void WhenGivenNegativeInput_ShouldThrowException()
+        {
+            string input = "-1";
+
+            var exception = Assert.Catch(typeof(ArgumentException), () => { _calculator.Add(input); });
+            Assert.AreEqual(exception.Message,"Negatives not allowed");
+        }
     }
 }
