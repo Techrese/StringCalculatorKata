@@ -11,16 +11,14 @@ namespace StringCalculatorKata
                 return 0;
             }
 
-            string[] numbers = input.Split(',');  
-            
+            string[] numbers = input.Split(',');
 
-
-            if (numbers.Length == 2)
+            int sum = 0;
+            foreach (var number in numbers)
             {
-                return Convert.ToInt32(numbers.GetValue(0)) + Convert.ToInt32(numbers.GetValue(1));
-            }            
-
-            return Convert.ToInt32(input);
+                sum += Convert.ToInt32(number);
+            }
+            return sum;
         }
     }
 }

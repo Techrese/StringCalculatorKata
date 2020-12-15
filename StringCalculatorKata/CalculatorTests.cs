@@ -57,5 +57,15 @@ namespace StringCalculatorKata
 
             Assert.AreEqual(22, result);
         }
+        
+        [Test]
+        public void WhenGivenAnyInputsSeparatedWithNewLines_ShouldReturnSum()
+        {
+            string input = "2\n2\n2\n2\n2\n2\n2\n2\n2\n2\n2";
+
+            int result = _calculator.Add(input);
+
+            Assert.AreEqual(22, result);
+        }
     }
 }
