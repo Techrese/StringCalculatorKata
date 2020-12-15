@@ -11,7 +11,7 @@ namespace StringCalculatorKata
                 return 0;
             }
 
-            string[] numbers = input.Split(',');
+            string[] numbers = input.Split(new char[] { ',', '\n' });
 
             int sum = 0;
             foreach (var number in numbers)
