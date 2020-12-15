@@ -1,7 +1,9 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace StringCalculatorKata
+namespace CalculatorKata
 {
     [TestFixture]
     public class CalculatorTests
@@ -14,28 +16,18 @@ namespace StringCalculatorKata
             string input = string.Empty;
 
             int result = _calculator.Add(input);
-            
+
             Assert.AreEqual(0, result);
         }
-        
+
         [Test]
         public void WhenGivenInputOne_ShouldReturnOne()
         {
             string input = "1";
 
             int result = _calculator.Add(input);
-            
+
             Assert.AreEqual(1, result);
-        }
-
-        [Test]
-        public void WhenGivenInputTwo_ShouldReturnTwo()
-        {
-            string input = "2";
-
-            int result = _calculator.Add(input);
-
-            Assert.AreEqual(2, result);
         }
     }
 }

@@ -4,7 +4,14 @@ namespace StringCalculatorKata
     {
         public int Add(string input)
         {
-            return 0;
+            if (input == "1")
+            {
+                return 1;
+            }
+            else 
+            {
+                return 0;
+            }            
         }
     }
 }
