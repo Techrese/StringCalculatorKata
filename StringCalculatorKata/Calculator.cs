@@ -1,16 +1,10 @@
-﻿using System;
-
 namespace StringCalculatorKata
 {
-    internal class Calculator
+    class Calculator
     {
-        public Calculator()
+        public int Add(string input)
         {
-        }
-
-        internal int Add(string input)
-        {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
         }
     }
 }
