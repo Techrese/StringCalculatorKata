@@ -92,7 +92,6 @@ namespace StringCalculatorKata
         public void WhenGivenAnyInputsWithSpecifiedDelimiter_ShouldReturnSum()
         {
             string input = "$\n2$2";
-
             int result = _calculator.Add(input);
 
             Assert.AreEqual(4, result);
@@ -104,7 +103,16 @@ namespace StringCalculatorKata
             string input = "-1";
 
             var exception = Assert.Catch(typeof(ArgumentException), () => { _calculator.Add(input); });
-            Assert.AreEqual(exception.Message,"Negatives not allowed");
+            Assert.AreEqual(exception.Message,"Negatives not allowed: -1");
+        }
+        
+        [Test]
+        public void WhenGivenMultipleNegativeInput_ShouldThrowException()
+        {
+            string input = "-1,2,-2";
+
+            var exception = Assert.Catch(typeof(ArgumentException), () => { _calculator.Add(input); });
+            Assert.AreEqual(exception.Message,"Negatives not allowed: -1 -2");
         }
     }
 }

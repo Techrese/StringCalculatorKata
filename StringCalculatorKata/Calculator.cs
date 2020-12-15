@@ -11,8 +11,13 @@ namespace StringCalculatorKata
             {
                 return 0;
             }
-                        
-            string[] numbers = input.Split(new char[] { ',', '\n' });
+
+            if (input.Contains("-"))
+            {
+                throw new ArgumentException($"Negatives not allowed: {input}");
+            }
+            
+            string[] numbers = input.Split(',', '\n');
 
             int result;
             if (numbers.Length > 1 && !int.TryParse(numbers[0], out result))
