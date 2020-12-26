@@ -8,7 +8,7 @@ namespace CalculatorWebApplication.Repositories
         void AddCalculation(int input);
         Calculation GetLatestCalculation();
 
-        int GetLatestCalculationResult();
+        int? GetLatestCalculationResult();
 
         IEnumerable<Calculation> GetAll();
 

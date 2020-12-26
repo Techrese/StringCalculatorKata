@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using NUnit.Framework;
 using CalculatorWebApplication.Repositories;
 
 namespace StringCalculatorKata
@@ -36,5 +37,16 @@ namespace StringCalculatorKata
             _calculatorRepository.AddCalculation(4);
             Assert.AreEqual(4, _calculatorRepository.GetLatestCalculationResult());
         }
+        
+        [Test]
+        public void WhenMultipleCalculationsWithResultAreCompleted_GetAllPastResults()
+        {
+            _calculatorRepository.AddCalculation(1);
+            _calculatorRepository.AddCalculation(2);
+            _calculatorRepository.AddCalculation(3);
+            var expectedResults = new List<int>(){1,2,3};
+            Assert.AreEqual(expectedResults, _calculatorRepository.GetAllResults());
+        }
+        
     }
 }

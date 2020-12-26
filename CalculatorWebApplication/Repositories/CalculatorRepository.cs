@@ -8,9 +8,12 @@ namespace CalculatorWebApplication.Repositories
 {
     public class CalculatorRepository : ICalculatorRepository
     {
+        private int latestCalculation;
+        private bool currentStatus;
         public void AddCalculation(int input)
         {
-            throw new NotImplementedException();
+            currentStatus = true;
+            latestCalculation = input;
         }
 
         public IEnumerable<Calculation> GetAll()
@@ -28,9 +31,13 @@ namespace CalculatorWebApplication.Repositories
             throw new NotImplementedException();
         }
 
-        public int GetLatestCalculationResult()
-        {            
-            throw new NotImplementedException();         
+        public int? GetLatestCalculationResult()
+        {
+            if (!currentStatus)
+            {
+                return null;
+            }
+            return latestCalculation;
         }
     }
 }
