@@ -6,14 +6,20 @@ namespace CalculatorWebApplication.Services
     public class CalculatorService : ICalculatorService
     {
         private Calculator _calculator = new();
+        private int latestCalculation;
+        private bool currentStatus;
+
         public bool GetStatus()
         {
-            return true;
+            currentStatus = true;
+            return currentStatus;
         }
 
         public int Add(string input)
         {
-            return _calculator.Add(input);
+            latestCalculation = _calculator.Add(input);
+            currentStatus = true;
+            return latestCalculation;
         }
 
         public int Subtract(string input)
@@ -21,9 +27,13 @@ namespace CalculatorWebApplication.Services
             throw new System.NotImplementedException();
         }
 
-        public int GetLatestCalculationResult()
+        public int? GetLatestCalculationResult()
         {
-            throw new System.NotImplementedException();
+            if (!currentStatus)
+            {
+                return null;
+            }
+            return latestCalculation;
         }
 
         public int GetLatestCalculationDetails()

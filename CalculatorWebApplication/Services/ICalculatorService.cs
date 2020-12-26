@@ -8,7 +8,7 @@ namespace CalculatorWebApplication.Services
         
         int Add(string input);
         int Subtract(string input);
-        int GetLatestCalculationResult();
+        int? GetLatestCalculationResult();
         int GetLatestCalculationDetails();
         IEnumerable<int> GetCalculationResults();
     }
