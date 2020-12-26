@@ -1,9 +1,8 @@
 using System;
-using System.Security.Cryptography.X509Certificates;
 
-namespace StringCalculatorKata
+namespace CalculatorWebApplication.Models
 {
-    class Calculator
+    public class Calculator
     {
         public int Add(string input)
         {

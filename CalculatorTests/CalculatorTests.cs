@@ -1,4 +1,5 @@
 ﻿using System;
+using CalculatorWebApplication.Models;
 using NUnit.Framework;
 
 namespace StringCalculatorKata
@@ -6,7 +7,7 @@ namespace StringCalculatorKata
     [TestFixture]
     public class CalculatorTests
     {
-        private Calculator _calculator = new Calculator();
+        private Calculator _calculator = new();
 
         [Test]
         public void WhenGivenEmptyString_ShouldReturnZero()
@@ -104,15 +105,6 @@ namespace StringCalculatorKata
 
             var exception = Assert.Catch(typeof(ArgumentException), () => { _calculator.Add(input); });
             Assert.AreEqual(exception.Message,"Negatives not allowed: -1");
-        }
-        
-        [Test]
-        public void WhenGivenMultipleNegativeInput_ShouldThrowException()
-        {
-            string input = "-1,2,-2";
-
-            var exception = Assert.Catch(typeof(ArgumentException), () => { _calculator.Add(input); });
-            Assert.AreEqual(exception.Message,"Negatives not allowed: -1 -2");
         }
     }
 }
