@@ -1,24 +1,29 @@
 using System.Collections.Generic;
 using CalculatorWebApplication.Models;
+using CalculatorWebApplication.Repositories;
 
 namespace CalculatorWebApplication.Services
 {
     public class CalculatorService : ICalculatorService
     {
         private Calculator _calculator = new();
-        private int latestCalculation;
-        private bool currentStatus;
+        private ICalculatorRepository _calculatorRepository;
+
+
+        public CalculatorService(ICalculatorRepository calculatorRepository)
+        {
+            _calculatorRepository = calculatorRepository;
+        }
 
         public bool GetStatus()
-        {
-            currentStatus = true;
-            return currentStatus;
+        {            
+            return true;
         }
 
         public int Add(string input)
-        {
-            latestCalculation = _calculator.Add(input);
-            currentStatus = true;
+        {            
+            int latestCalculation = _calculator.Add(input);
+            _calculatorRepository.AddCalculation(latestCalculation);
             return latestCalculation;
         }
 
@@ -29,11 +34,7 @@ namespace CalculatorWebApplication.Services
 
         public int? GetLatestCalculationResult()
         {
-            if (!currentStatus)
-            {
-                return null;
-            }
-            return latestCalculation;
+            return _calculatorRepository.GetLatestCalculationResult();
         }
 
         public int GetLatestCalculationDetails()

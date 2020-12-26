@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CalculatorWebApplication.Repositories
 {
-    interface ICalculatorRepository
+    public interface ICalculatorRepository
     {
         void AddCalculation(int input);
         Calculation GetLatestCalculation();

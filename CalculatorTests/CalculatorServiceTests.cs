@@ -1,17 +1,21 @@
+using CalculatorWebApplication.Repositories;
 using CalculatorWebApplication.Services;
 using NUnit.Framework;
+using Moq;
 
 namespace StringCalculatorKata
 {
     [TestFixture]
     public class CalculatorServiceTests
     {
-        private CalculatorService _calculatorService = new();
+        private Mock<ICalculatorRepository> _calculatorRepository = new Mock<ICalculatorRepository>();
+        private CalculatorService _calculatorService;
 
         [SetUp]
         public void Setup()
         {
-            _calculatorService = new();
+            _calculatorService = new(_calculatorRepository.Object);
+            _calculatorRepository.Setup(repo => repo.GetLatestCalculationResult()).Returns((int?)null);
         }
 
         [Test]
@@ -40,14 +44,16 @@ namespace StringCalculatorKata
         [TestCase("5", ExpectedResult = 5)]
         [TestCase("1,2,3,4,5", ExpectedResult = 15)]
         public int? WhenCalculationWithResultIsCompleted_GetLatestCalculationResultShouldReturnSameResult(string input)
-        {
-            _calculatorService.Add(input);
+        {            
+            int result = _calculatorService.Add(input);
+            _calculatorRepository.Setup(repo => repo.GetLatestCalculationResult()).Returns(result);
             return _calculatorService.GetLatestCalculationResult();
         }
         
         [Test]
         public void WhenCalculationWithResultIsCompleted_GetLatestCalculationResultShouldReturnSameResult()
         {
+            _calculatorRepository.Setup( repo => repo.GetLatestCalculationResult()).Returns(4);
             _calculatorService.Add("1,2");
             _calculatorService.Add("1,3");
             Assert.AreEqual(4, _calculatorService.GetLatestCalculationResult());

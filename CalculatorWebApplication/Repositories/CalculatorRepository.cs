@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 namespace CalculatorWebApplication.Repositories
 {
     public class CalculatorRepository : ICalculatorRepository
-    {
-        private int latestCalculation;
-        private bool currentStatus;
+    {          
+        private IList<int> results = new List<int>();
+
         public void AddCalculation(int input)
-        {
-            currentStatus = true;
-            latestCalculation = input;
+        {                  
+            results.Add(input);
         }
 
         public IEnumerable<Calculation> GetAll()
@@ -23,7 +22,7 @@ namespace CalculatorWebApplication.Repositories
 
         public IEnumerable<int> GetAllResults()
         {
-            throw new NotImplementedException();
+            return results;
         }
 
         public Calculation GetLatestCalculation()
@@ -33,11 +32,11 @@ namespace CalculatorWebApplication.Repositories
 
         public int? GetLatestCalculationResult()
         {
-            if (!currentStatus)
+            if (results.Count == 0)
             {
                 return null;
             }
-            return latestCalculation;
+            return results.Last();
         }
     }
 }

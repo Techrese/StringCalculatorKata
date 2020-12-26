@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using CalculatorWebApplication.Services;
+using CalculatorWebApplication.Repositories;
 
 namespace CalculatorWebApplication
 {
@@ -26,6 +27,7 @@ namespace CalculatorWebApplication
         {
             services.AddControllersWithViews();
             services.AddSingleton<ICalculatorService, CalculatorService>();
+            services.AddSingleton<ICalculatorRepository, CalculatorRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
