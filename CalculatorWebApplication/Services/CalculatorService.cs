@@ -6,7 +6,7 @@ namespace CalculatorWebApplication.Services
     {
         public bool GetStatus()
         {
-            throw new System.NotImplementedException();
+            return true;
         }
 
         public int Add(string input)
