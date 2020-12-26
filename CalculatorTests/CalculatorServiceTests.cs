@@ -24,5 +24,22 @@ namespace StringCalculatorKata
             return _calculatorService.Add(input);
         }
 
+        [TestCase("1,2", ExpectedResult = 3)]
+        [TestCase("5", ExpectedResult = 5)]
+        [TestCase("1,2,3,4,5", ExpectedResult = 15)]
+        public int WhenCalculationWithResultIsCompleted_GetLatestCalculationResultShouldReturnSameResult(string input)
+        {
+            _calculatorService.Add(input);
+            return _calculatorService.GetLatestCalculationResult();
+        }
+        
+        [Test]
+        public void WhenCalculationWithResultIsCompleted_GetLatestCalculationResultShouldReturnSameResult()
+        {
+            _calculatorService.Add("1,2");
+            _calculatorService.Add("1,3");
+            Assert.Equals("4", _calculatorService.GetLatestCalculationResult());
+        }
+
     }
 }
