@@ -51,7 +51,6 @@ namespace StringCalculatorKata
             _calculatorService.Add("1,2");
             _calculatorService.Add("1,3");
             Assert.AreEqual(4, _calculatorService.GetLatestCalculationResult());
-        }       
-
+        } 
     }
 }
