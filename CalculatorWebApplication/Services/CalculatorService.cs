@@ -39,7 +39,7 @@ namespace CalculatorWebApplication.Services
 
         public Calculation GetLatestCalculationDetails()
         {
-            throw new System.NotImplementedException();
+            return _calculatorRepository.GetLatestCalculation();
         }
 
         public IEnumerable<int> GetCalculationResults()
