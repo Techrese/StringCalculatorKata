@@ -48,5 +48,7 @@ namespace StringCalculatorKata
             Assert.AreEqual(expectedResults, _calculatorRepository.GetAllResults());
         }
         
+        
+        
     }
 }

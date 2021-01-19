@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CalculatorWebApplication.Models;
 
 namespace CalculatorWebApplication.Services
 {
@@ -9,7 +10,7 @@ namespace CalculatorWebApplication.Services
         int Add(string input);
         int Subtract(string input);
         int? GetLatestCalculationResult();
-        int GetLatestCalculationDetails();
+        Calculation GetLatestCalculationDetails();
         IEnumerable<int> GetCalculationResults();
     }
 }

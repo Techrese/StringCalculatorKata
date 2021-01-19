@@ -1,3 +1,4 @@
+using CalculatorWebApplication.Models;
 using CalculatorWebApplication.Repositories;
 using CalculatorWebApplication.Services;
 using NUnit.Framework;
@@ -8,7 +9,7 @@ namespace StringCalculatorKata
     [TestFixture]
     public class CalculatorServiceTests
     {
-        private Mock<ICalculatorRepository> _calculatorRepository = new Mock<ICalculatorRepository>();
+        private Mock<ICalculatorRepository> _calculatorRepository = new();
         private CalculatorService _calculatorService;
 
         [SetUp]
@@ -57,6 +58,19 @@ namespace StringCalculatorKata
             _calculatorService.Add("1,2");
             _calculatorService.Add("1,3");
             Assert.AreEqual(4, _calculatorService.GetLatestCalculationResult());
+        } 
+        
+        [Test]
+        public void WhenCalculationWithResultIsCompleted_GetLatestCalculationDetailsShouldReturnSameResult()
+        {
+            var calculation = new Calculation(){Input = "1,3", Operation = "add", Result = 4};
+            _calculatorRepository.Setup( repo => repo.GetLatestCalculation()).Returns(calculation);
+            _calculatorService.Add("1,2");
+            _calculatorService.Add("1,3");
+            Calculation latestCalculation = _calculatorService.GetLatestCalculationDetails();
+            Assert.AreEqual(4, latestCalculation.Result);
+            Assert.AreEqual("1,3", latestCalculation.Input);
+            Assert.AreEqual("add", latestCalculation.Operation);
         } 
     }
 }
