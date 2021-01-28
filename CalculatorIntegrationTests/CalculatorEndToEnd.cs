@@ -32,8 +32,7 @@ namespace CalculatorIntegrationTests
                         
             // Assert
             response.EnsureSuccessStatusCode(); // Status Code 200-299
-            Assert.Equal("text/html; charset=utf-8",
-                response.Content.Headers.ContentType.ToString());
+            Assert.Equal("text/html; charset=utf-8", response.Content.Headers.ContentType.ToString());
         }
 
         [Fact]
@@ -54,7 +53,7 @@ namespace CalculatorIntegrationTests
             //var response = new HttpResponseMessage();
 
             request.Content = JsonContent.Create(calcRequest, typeof(CalculatorWebApplication.Dtos.CalculationRequest));
-            request.RequestUri = new Uri("/calculation");
+            request.RequestUri = new Uri("/calculation", UriKind.Relative);
             request.Method = HttpMethod.Post;
             
 
